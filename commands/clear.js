@@ -1,6 +1,6 @@
 const discord = require('discord.js')
  
-    run : async(client, message, args) => {
+    run : async(bot, message, args) => {
         if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.channel.send('You do not have permission to use this command') //When the author doesnt have the manage messages permission it wouldn't let them use the command
         if(!args[0]) return message.channel.send('Please specify an amount to delete (1-99)') // when there is no number provided
         if(isNaN(args[0])) return message.channel.send('Numbers are only allowed') // checking if the args is a number.
