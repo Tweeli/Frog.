@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    message.channel.send("BAP#0515")
+    message.channel.send("@BAP#0515")
 
 }
 
