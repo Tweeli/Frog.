@@ -34,7 +34,7 @@ bot.login(botConfig.token);
 bot.on("ready", async () => {
     
 console.log(`${bot.user.username} Is online!`)
-bot.user.setActivity("Created by Tweeli.#0001.", {type: "CUSTOM_STATUS"});
+bot.user.setActivity("naar Yana haar gezaag..", {type: "LISTENING"});
 
 });
 
