@@ -1,76 +1,55 @@
 const discord = require("discord.js");
+const client = new Discord.Client();
 
 module.exports.run = async (bot, message, args) => {
 
-
-    if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("sorry jij kan dit niet");
-
-    if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Geen perms");
-
-    if (!args[0]) return message.reply("Geen gebruiker opgegeven.");
-
-    if (!args[1]) return message.reply("Gelieve een redenen op te geven.");
-
-    var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.cache.get(args[1]));
-
-    var reason = args.slice(1).join(" ");
-
-    if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
-
-    var embed = new discord.MessageEmbed()
-        .setColor("#ff0000")
-        .setThumbnail(kickUser.user.displayAvatarURL)
-        .setFooter(message.member.displayName, message.author.displayAvatarURL)
-        .setTimestamp()
-        .setDescription(`** Gekickt:** ${kickUser} (${kickUser.id})
-            **Gekickt door:** ${message.author}
-            **Redenen: ** ${reason}`)
-            .setFooter('Created by Tweeli.#0001');
-
-    var embedPrompt = new discord.MessageEmbed()
-        .setColor("GREEN")
-        .setAuthor("Gelieve te reageren binnen 30 sec.")
-        .setDescription(`Wil je ${kickUser} kicken?`)
-        .setFooter('Created by Tweeli.#0001');
-
-
-    message.channel.send(embedPrompt).then(async msg => {
-
-        var emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
-
-        if (emoji === "✅") {
-
-            msg.delete();
-
-            kickUser.kick(reason).catch(err => {
-                if (err) return message.channel.send(`Er is iets foutgegaan.`);
-            });
-
-            message.reply(embed);
-
-        } else if (emoji === "❌") {
-
-            msg.delete();
-
-            message.reply("Kick geanuleerd").then(m => m.delete(5000));
-
+    client.on('message', message => {
+        // Ignore messages that aren't from a guild
+        if (!message.guild) return;
+      
+        // If the message content starts with "!kick"
+        if (message.content.startsWith('!kick')) {
+          // Assuming we mention someone in the message, this will return the user
+          // Read more about mentions over at https://discord.js.org/#/docs/main/master/class/MessageMentions
+          const user = message.mentions.users.first();
+          // If we have a user mentioned
+          if (user) {
+            // Now we get the member from the user
+            const member = message.guild.member(user);
+            // If the member is in the guild
+            if (member) {
+              /**
+               * Kick the member
+               * Make sure you run this on a member, not a user!
+               * There are big differences between a user and a member
+               */
+              member
+                .kick('Optional reason that will display in the audit logs')
+                .then(() => {
+                  // We let the message author know we were able to kick the person
+                  message.reply(`Successfully kicked ${user.tag}`);
+                })
+                .catch(err => {
+                  // An error happened
+                  // This is generally due to the bot not being able to kick the member,
+                  // either due to missing permissions or role hierarchy
+                  message.reply('I was unable to kick the member');
+                  // Log the error
+                  console.error(err);
+                });
+            } else {
+              // The mentioned user isn't in this guild
+              message.reply("That user isn't in this guild!");
+            }
+            // Otherwise, if no user was mentioned
+          } else {
+            message.reply("You didn't mention the user to kick!");
+          }
         }
+      });
 
-    });
 
-}
 
-async function promptMessage(message, author, time, reactions) {
-
-    time *= 1000;
-
-    for (const reaction of reactions) {
-        await message.react(reaction);
-    }
-
-    const filter = (reaction, user) => reactions.includes(reaction.emoji.name) && user.id === author.id;
-
-    return message.awaitReactions(filter, { max: 1, time: time }).then(collected => collected.first() && collected.first().emoji.name);
 }
 
 module.exports.help = {

@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
             .addField("Bot naam:", "Frog.")
             .addField("Bot ID:", "795441564397994004")
             .addField("Gemaakt door:", "Tweeli.#0001")
-            .addField("Discord.js:", "V12.2.0")
+            .addField("Discord.js:", "V12.5.1")
             .addField("Node:", "V13.14.0")
             .addField("Platform:", "MacOS")
             .addField("Laatst geüpdate:", "24 Juni 23:44")
