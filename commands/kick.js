@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
             }
             // Otherwise, if no user was mentioned
           } else {
-            message.reply("Je hebt geen user gatagd die je wilt kicken.");
+            message.reply("Je hebt geen persoon opgegeven.");
           }
         };
 
