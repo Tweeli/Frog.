@@ -34,7 +34,7 @@ bot.login(botConfig.token);
 bot.on("ready", async () => {
     
 console.log(`${bot.user.username} Is online!`)
-bot.user.setStatus("Created by Tweeli.#0001.");
+bot.user.setS("Created by Tweeli.#0001.", {type: "PLAYING"});
 
 });
 
