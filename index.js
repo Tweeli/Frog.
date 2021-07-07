@@ -34,7 +34,7 @@ bot.login(botConfig.token);
 bot.on("ready", async () => {
     
 console.log(`${bot.user.username} Is online!`)
-bot.user.setActivity("Yana is stom.", {type: "WATCHING"});
+bot.user.setActivity("Yana.", {type: "WATCHING"});
 
 });
 
