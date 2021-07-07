@@ -27,7 +27,7 @@ module.exports.run = async (bot, message, args) => {
                */
               member
                 .ban({
-                  reason: 'They were bad!',
+                  reason: 'Joe.',
                 })
                 .then(() => {
                   // We let the message author know we were able to ban the person
