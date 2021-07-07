@@ -1,9 +1,9 @@
 const discord = require("discord.js");
-const bot = new Discord.bot();
+const client = new Discord.Client();
 
-module.exports.run = async (bot, message, args) => { 
+module.exports.run = async (bot, message, args) => {
 
-    bot.on('message', message => {
+
         // Ignore messages that aren't from a guild
         if (!message.guild) return;
       
@@ -45,8 +45,7 @@ module.exports.run = async (bot, message, args) => {
           } else {
             message.reply("You didn't mention the user to kick!");
           }
-        }
-      });
+        };
 
 
 
