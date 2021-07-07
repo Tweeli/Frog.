@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
             var dispatcher = voiceChannel.play(stream, options);
 
         }).catch(console.error);
-.
+
     message.channel.send(`Nu aan het spelen ${info.title}`);
 
 }
