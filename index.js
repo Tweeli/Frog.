@@ -34,7 +34,7 @@ bot.login(botConfig.token);
 bot.on("ready", async () => {
     
 console.log(`${bot.user.username} Is online!`)
-bot.user.setActivity("BapKuip is stout!.", {type: "PLAYING"});
+bot.user.setActivity("BapKuip is stout!", {type: "PLAYING"});
 
 });
 
