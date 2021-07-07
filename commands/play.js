@@ -3,14 +3,14 @@ const ytdl = require("ytdl-core");
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.voice.channel) return message.reply("> Join eerst een spraakkanaal.");
+    if (!message.member.voice.channel) return message.reply("Join eerst een spraakkanaal.");
 
-    if (message.guild.me.voice.channel) return message.channel.send("> Sorry, de bot is al verbonden.");
+    if (message.guild.me.voice.channel) return message.channel.send("Sorry, de bot is al verbonden.");
 
-    if (!args[0]) return message.reply("> Gelieven een url mee te geven.");
+    if (!args[0]) return message.reply("Gelieven een url mee te geven.");
 
     var validate = await ytdl.validateURL(args[0]);
-    if(!validate) return message.channel.send("> Sorry, gelieve een juiste url op te geven.");
+    if(!validate) return message.channel.send("Sorry, gelieve een juiste url op te geven.");
 
     var info = await ytdl.getInfo(args[0]);
 
