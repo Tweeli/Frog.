@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
 
         }).catch(console.error);
 
-    message.channel.send(`Nu aan het spelen ${info.title}`);
+    message.channel.send(`> Nu aan het spelen ${info.title}`);
 
 }
 
