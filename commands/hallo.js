@@ -1,17 +1,11 @@
 const discord = require("discord.js");
 
-module.exports.run = async(bot, message, args) => {
+module.exports.run = async (bot, message, args) => {
 
-    var halloEmbed = new discord.MessageEmbed()
-     .setDescription("Hallo!")
-     .setColor("#6aa75e")
-     .setFooter('Created by Tweeli.#0001');
-    message.channel.send(halloEmbed)   
+    message.reply("Hallo.")
 
 }
 
 module.exports.help = {
-    name: "hallo",
-    description: "",
-    category: ""
+    name: "baptag"
 }
