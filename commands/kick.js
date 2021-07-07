@@ -32,7 +32,7 @@ module.exports.run = async (bot, message, args) => {
                   // An error happened
                   // This is generally due to the bot not being able to kick the member,
                   // either due to missing permissions or role hierarchy
-                  message.reply('I was unable to kick the member');
+                  message.reply('Ik kon deze persoon niet bannen.');
                   // Log the error
                   console.error(err);
                 });
@@ -42,7 +42,7 @@ module.exports.run = async (bot, message, args) => {
             }
             // Otherwise, if no user was mentioned
           } else {
-            message.reply("You didn't mention the user to kick!");
+            message.reply("Je hebt geen user gatagd die je wilt kicken.");
           }
         };
 
