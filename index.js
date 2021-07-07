@@ -2,10 +2,10 @@ const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 
 
-const fs = require("fs");
+const fs = require("fs"); 
 //client//
-const client = new discord.Client();
-client.commands = new discord.Collection();
+const bot = new discord.Client();
+bot.commands = new discord.Collection();
 
 fs.readdir("./commands/" , (err, files) => {
 
@@ -23,22 +23,22 @@ fs.readdir("./commands/" , (err, files) => {
         var fileGet = require(`./commands/${f}`);
         console.log(`De file ${f} is geladen.`);
 
-        client.commands.set(fileGet.help.name, fileGet);
+        bot.commands.set(fileGet.help.name, fileGet);
 
 
     })
 
 })
-client.login(botConfig.token);
+bot.login(botConfig.token);
 
-client.on("ready", async () => {
+bot.on("ready", async () => {
     
-console.log(`${client.user.username} Is online!`)
-client.user.setActivity("Testen.", {type: "Playing"});
+console.log(`${bot.user.username} Is online!`)
+bot.user.setActivity("Testen.", {type: "Playing"});
 
 });
 
-client.on("message", async message =>{
+bot.on("message", async message =>{
 
     if(message.author.bot) return;
 
@@ -51,11 +51,11 @@ client.on("message", async message =>{
     var command = messageArray[0];
     var arguments = messageArray.slice(1);
 
-    var commands = client.commands.get(command.slice(prefix.length));
+    var commands = bot.commands.get(command.slice(prefix.length));
 
-    if(commands) commands.run(client, message, arguments);
+    if(commands) commands.run(bot, message, arguments);
 
 
 });
 
-client.login(process.env.token);
+bot.login(process.env.token);
