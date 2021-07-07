@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@discordjs/opus": "^0.5.3",
     "discord.js": "^12.5.1",
     "ffmpeg-static": "^4.4.0",
     "moment": "^2.29.1",
