@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args, options) => {
 
     var data = options.active.get(message.guild.id) || {};
 
-    if(!data.connection) data.connection = await message.member.voice.join();
+    if(!data.connection) data.connection = await message.member.voice.channel.join();
 
     if(!data.queue) data.queue = [];
 
