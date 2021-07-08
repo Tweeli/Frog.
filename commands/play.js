@@ -14,6 +14,7 @@ module.exports.run = async (bot, message, args, options) => {
     if(!validate) return message.channel.send("Sorry, gelieve een juiste url op te geven.");
 
     var info = await ytdl.getInfo(args[0]);
+        if(err) console.log(err);
 
     var data = options.active.get(message.guild.id) || {};
 
