@@ -1,6 +1,7 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 const fs = require("fs"); 
+const activeSongs = new Map();
 
 
 //client//
@@ -54,9 +55,13 @@ bot.on("message", async message =>{
 
     var commands = bot.commands.get(command.slice(prefix.length));
 
-    if(commands) commands.run(bot, message, arguments);
+    var options = {
+        active: activeSongs
+    };
+
+    if(commands) commands.run(bot, message, arguments, options);
 
 
 });
 
-bot.login(process.env.token);
+bot.login(process.env.token); client
