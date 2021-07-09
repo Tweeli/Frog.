@@ -43,7 +43,7 @@ bot.on("ready", async () => {
      data:{
          name: "test",
          description: 'Geeft een antwoord.'
-     }.
+     }
  });
 
 });
