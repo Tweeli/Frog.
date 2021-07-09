@@ -53,7 +53,7 @@ bot.on("ready", async () => {
 
         options:[
             {
-                name:'Inhoud',
+                name: 'Inhoud',
                 description: 'Inhoud van je bericht.',
                 type: 3,
                 require: true
