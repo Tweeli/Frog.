@@ -39,29 +39,6 @@ bot.on("ready", async () => {
  
  bot.user.setActivity("Tweeli.#0001.", {type: "LISTENING"});
 
- bot.api.applications(bot.user.id).guilds('822930004803059722').commands.post({
-     data:{
-         name: "test",
-         description: 'Geeft een antwoord.'
-     }
- });
-
- bot.api.applications(bot.user.id).guilds('822930004803059722').commands.post({
-    data:{
-        name: "Tekts",
-        description: 'Geeft jouw eigen antwoord terug.',
-
-        options:[
-            {
-                name: 'Inhoud',
-                description: 'Inhoud van je bericht.',
-                type: 3,
-                require: true
-            }
-        ]
-    }
-});
-
 });
 
 bot.on("message", async message =>{
