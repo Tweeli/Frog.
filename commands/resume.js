@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args, options) => {
 
     if (!guildIDData.dispatcher.paused) return message.reply("De muziek is niet gepauzeerd.");
 
-    guildIDData.dispatcher.pause();
+    guildIDData.dispatcher.resume();
 
     return message.channel.send("> De muziek is succesvol herstart.");
 
