@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args, options) => {
     if (!args[0]) return message.reply("Gelieven een url mee te geven.");
 
     var validate = await ytdl.validateURL(args[0]);
-    if(!validate) return message.channel.send("Sorry, gelieve een juiste url op te geven.");
+    if(!validate) return message.reply("> Sorry, gelieven een juiste url op te geven.");
 
     var info = await ytdl.getInfo(args[0]);
     
@@ -35,7 +35,7 @@ module.exports.run = async (bot, message, args, options) => {
     if(!data.dispatcher){
         Play(bot, options, data);
     }else{
-        message.channel.send(`Toegevoegd aan queue: ${info.title} | Aangevraagd door: ${message.author.tag}`);
+        message.reply(`Toegevoegd aan queue: ${info.title} | Aangevraagd door: ${message.author.tag}`);
     }
 
     options.active.set(message.guild.id, data);

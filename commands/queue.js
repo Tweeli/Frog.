@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args, options) => {
 
     var guildIDData = options.active.get(message.guild.id);
 
-    if(!guildIDData) return message.channel.send("Er is geen muziek aan het spelen op dit moment.");
+    if(!guildIDData) return message.reply("Er is geen muziek aan het spelen op dit moment.");
 
     var queue = guildIDData.queue;
     var nowPlaying = queue[0];
