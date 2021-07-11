@@ -9,11 +9,11 @@ module.exports.run = async (bot, message, args, options) => {
     var queue = guildIDData.queue;
     var nowPlaying = queue[0];
 
-    var response = `Nu aan het spelen ${nowPlaying.songTitle} || Aangevraagd door ${nowPlaying.requester}. \n\n queue: \n`;
+    var response = `> Nu aan het spelen ${nowPlaying.songTitle} || Aangevraagd door ${nowPlaying.requester}. \n\n > queue: \n`;
 
     for (let index = 0; index < queue.length; index++) {
 
-        response += `${index}, ${queue[index].songTitle} Aangevraagd door ${queue[index].requester}\n`;
+        response += `> ${index}, ${queue[index].songTitle} Aangevraagd door ${queue[index].requester}\n`;
 
     }
 
