@@ -39,6 +39,13 @@ bot.on("ready", async () => {
  
  bot.user.setActivity("Tweeli.#0001.", {type: "LISTENING"});
 
+ client.api.applications(client.user.id).guilds('822930004803059722').commands.post({
+     data:{
+         name:"Test.",
+         discription: 'Geeft een antwoord.'
+     }
+ });
+
 });
 
 bot.on("message", async message =>{
