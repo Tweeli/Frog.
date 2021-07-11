@@ -8,6 +8,14 @@ module.exports.run = async (bot, message, args, options) => {
 
     if (message.member.voice.channel != message.guild.me.voice.channel) return message.reply("Sorry, je zit niet in het zelfde spraakkanaal.");
 
+    if (message.member.hasPermission("KICK_MEMBERS")){
+
+        message.channel.send("> Opweg naar het volgende liedje!");
+
+        return guildIDData.dispatcher.emit("finish");
+
+    }
+
     var amountUsers = message.member.voice.channel.members.size;
 
     var amountSkip = Math.ceil(amountUsers / 2);
