@@ -13,7 +13,7 @@ module.exports.run = async (bot, message, args, options) => {
 
     for (let index = 0; index < queue.length; index++) {
 
-        response += `> ${index}, ${queue[index].songTitle} Aangevraagd door ${queue[index].requester}\n`;
+        response += `> ${index}. ${queue[index].songTitle} Aangevraagd door ${queue[index].requester}\n`;
 
     }
 
