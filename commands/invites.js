@@ -15,6 +15,6 @@ module.exports.run = async(bot, message, args) => {
 
 module.exports.help = {
     name: "invites",
-    description: "",
+    description: "Geeft leuke servers weer.",
     category: ""
 }

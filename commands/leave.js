@@ -10,11 +10,12 @@ module.exports.run = async (bot, message, args) => {
     if(message.guild.me.voice.channelID != message.member.voice.channelID) return message.channel.send("Sorry je bent niet verbonden met het zelfde kanaal.");
 
     message.guild.me.voice.channel.leave();
+    message.reply("Ik ben succesvol geleaved.")
 
 }
 
 module.exports.help = {
     name: "leave",
-    description: "Speel muziek af met deze command!",
+    description: "Leaved uit een voice channel.",
     catagory: "Muziek."
 }
