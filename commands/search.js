@@ -29,7 +29,7 @@ module.exports.run = async (bot, message, args, ops) => {
 
             var commandFile = require("./play.js");
 
-            commandFile.run(bot, message, this.videos[parseInt(music.content) - 1].url, ops);
+            commandFile.run(bot, message, [this.videos[parseInt(music.content) - 1].url], ops);
 
         })
 
