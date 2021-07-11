@@ -10,7 +10,7 @@ module.exports.run = async (bot, message, args) => {
     var ledenEmbed = new discord.MessageEmbed()
         .setColor("#6aa75e")
         .addField("Leden", ledenTotal, true)
-        .addField("Bots:", `${message.guild.members.cache.filter(m =>m.user.bot).size}`, true)
+        .addField("Bot(s):", `${message.guild.members.cache.filter(m =>m.user.bot).size}`, true)
         .addField("Mensen:", `${message.guild.memberCount - message.guild.members.cache.filter(m =>m.user.bot).size}`, true)
         .addField("Totaal aantal leden:", message.guild.memberCount, true)
         .addField("Online:", `${message.guild.members.cache.filter(m =>m.user.presence.status == "online" || m.user.presence.status == "dnd" || m.user.presence.status == "idle").size}`, true)
@@ -22,6 +22,6 @@ module.exports.run = async (bot, message, args) => {
 
 module.exports.help = {
     name: "leden",
-    description: "Geeft al de verschillende commands",
+    description: "Geeft weer hoeveel leden er in de server zitten.",
     category: "Informatie"
 }
