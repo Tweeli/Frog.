@@ -1,3 +1,4 @@
+const { Collection } = require("discord.js");
 const search = require("yt-search");
 
 module.exports.run = async (bot, message, args, ops) => {
@@ -17,6 +18,20 @@ module.exports.run = async (bot, message, args, ops) => {
         respone += `Kies een nummer tussen 0 en ${videos.length}.`;
 
         message.channel.send(respone);
+
+        const filter = music => !isNaN(music.content) && music.content < videos.length +1 && music.content > 0;
+
+        const collection = message.channel.createMessageCollector(filter);
+
+        collection.videos = videos; 
+
+        collection.once("collect", function (music) {
+
+            var commandFile = require("./play.js");
+
+            commandFile.run(bot, message, this.videos[parseInt(music.content) - 1].url, ops);
+
+        })
 
     });
 
