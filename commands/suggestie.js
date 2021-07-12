@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
     var suggestions = message.member.guild.channels.cache.get("863955314819072061");
 
     const suggestieEmbed = new discord.MessageEmbed()
-        .setTitle(`Suggestie van ${message.author}`)
+        .setTitle(`Suggestie van ${message.author}!`)
         .setColor("#6aa75e")
         .setDescription(args.join(" "))
         .setFooter('Created by Tweeli.#0001');
