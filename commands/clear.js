@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Je hebt geen toestemming om dit de doen.");
 
-    if (!arg[0]) return message.reply("Geen aantal opgegeven.");
+    if (!args[0]) return message.reply("Geen aantal opgegeven.");
 
     if (Number.isInteger(parseInt(args[0]))) {
 
