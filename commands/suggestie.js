@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
     const suggestieEmbed = new discord.MessageEmbed()
         .setTitle('Suggestie!')
         .setColor("#6aa75e")
-        .setDescription(args[0].join(" "))
+        .setDescription(args.join(" "))
         .setFooter('Created by Tweeli.#0001');
 
     var msg = await suggestions.channel.send(suggestieEmbed);
