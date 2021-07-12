@@ -65,8 +65,6 @@ bot.on("message", async message => {
 
     var command = messageArray[0];
 
-    RandomXp(message);
-
 
     if (!message.content.startsWith(prefix)) return;
 
