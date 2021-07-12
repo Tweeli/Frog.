@@ -24,7 +24,7 @@ module.exports.run = async (bot, message, args) => {
     const reviewEmbed = new discord.MessageEmbed()
       .setTitle(`${message.author.username} heeft een review geschreven.`)
       .setColor("#6aa75e")
-      .addField("Sterren: ", + stars)
+      .addField("Sterren: ", stars)
       .addField("Review: ", text);
     
     message.channel.send("> Je hebt je review succesvol geschreven.");
