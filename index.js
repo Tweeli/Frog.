@@ -45,8 +45,6 @@ bot.on("message", async message => {
 
     if (message.author.bot) return;
 
-    var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
-
     var msg = message.content.toLocaleLowerCase();
 
 
