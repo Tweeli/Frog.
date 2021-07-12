@@ -2,7 +2,7 @@ const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 const fs = require("fs"); 
 const activeSongs = new Map();
-const levelFile = require("./data/levels.json");
+const levelFile = require("./data/levels.json")
 
 
 //client//
@@ -62,15 +62,14 @@ bot.on("message", async message =>{
    
     }
 
-    var command = messageArray[0];
-
-    if (!message.content.startsWith(prefix)) return;
-    
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
 
+    var command = messageArray[0];
+    if(!message.content.startsWith(prefix)) return;
     var arguments = messageArray.slice(1);
+
 
     var commands = bot.commands.get(command.slice(prefix.length));
 
