@@ -20,7 +20,39 @@ module.exports.run = async (bot, message, args) => {
         } else if (result == "steen") {
 
             return message.reply(`Ik heb ${result} :moyai:, het is gelijkspel.`);
-            
+
+        }
+
+    }
+    else if (args[0].toUpperCase() == "PAPIER") {
+
+        if (result == "schaar") {
+
+            return message.reply(`Ik heb ${result} :scissors:, Ik win.`);
+
+        } else if (result == "steen") {
+
+            return message.reply(`Ik heb ${result} :moyai:, jij wint.`);
+        } else if (result == "papier") {
+
+            return message.reply(`Ik heb ${result} :notepad_spiral:, het is gelijkspel.`);
+
+        }
+
+    }
+    else if (args[0].toUpperCase() == "SCHAAR") {
+
+        if (result == "steen") {
+
+            return message.reply(`Ik heb ${result} :moyai:, Ik win.`);
+
+        } else if (result == "papier") {
+
+            return message.reply(`Ik heb ${result} :notepad_spiral:, jij wint.`);
+        } else if (result == "schaar") {
+
+            return message.reply(`Ik heb ${result} :scissors:, het is gelijkspel.`);
+
         }
 
     }
