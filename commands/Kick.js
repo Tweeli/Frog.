@@ -63,6 +63,8 @@ module.exports.run = async (client, message, args) => {
 
             kickUser.kick(reason).catch(err => {
                 if (err) return message.channel.send(`Er is iets foutgegaan.`);
+                console.error(err)
+
             });
 
             message.reply(embed);
