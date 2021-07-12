@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
-const fs = require("fs"); 
+const fs = require("fs");
 const activeSongs = new Map();
 const levelFile = require("./data/levels.json")
 
@@ -10,13 +10,13 @@ const bot = new discord.Client();
 bot.commands = new discord.Collection();
 
 
-fs.readdir("./commands/" , (err, files) => {
+fs.readdir("./commands/", (err, files) => {
 
-    if(err) console.log(err);
+    if (err) console.log(err);
 
     var jsFiles = files.filter(f => f.split(".").pop() === "js");
 
-    if(jsFiles.length <=0) {
+    if (jsFiles.length <= 0) {
         console.log("Kon geen files vinden.");
         return;
     }
@@ -35,18 +35,18 @@ fs.readdir("./commands/" , (err, files) => {
 bot.login(botConfig.token);
 
 bot.on("ready", async () => {
-    
- console.log(`${bot.user.username} Is online!`)
- 
- bot.user.setActivity("Tweeli.#0001.", {type: "LISTENING"});
+
+    console.log(`${bot.user.username} Is online!`)
+
+    bot.user.setActivity("Tweeli.#0001.", { type: "LISTENING" });
 
 });
 
-bot.on("message", async message =>{
+bot.on("message", async message => {
 
-    if(message.author.bot) return;
+    if (message.author.bot) return;
 
-    if(message.channel.type == "dm") return;
+    if (message.channel.type == "dm") return;
 
     var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
 
@@ -59,7 +59,7 @@ bot.on("message", async message =>{
 
             return message.reply("Gelieve niet te schelden.").then(msg => msg.delete({ timeout: 3000 }));
         }
-   
+
     }
 
     var prefix = botConfig.prefix;
@@ -68,12 +68,12 @@ bot.on("message", async message =>{
 
     var command = messageArray[0];
 
-    RandomXp();
+    RandomXp(message);
 
 
-    if(!message.content.startsWith(prefix)) return;
-    
-    
+    if (!message.content.startsWith(prefix)) return;
+
+
     var arguments = messageArray.slice(1);
 
 
@@ -83,17 +83,43 @@ bot.on("message", async message =>{
         active: activeSongs
     };
 
-    if(commands) commands.run(bot, message, arguments, options);
+    if (commands) commands.run(bot, message, arguments, options);
 
 
 });
 
-function RandomXp() {
+function RandomXp(message) {
 
     var randomNumber = Math.floor(Math.random() * 15) + 1;
 
-    console.log(randomNumber);
+    var idUser = message.author.id;
+
+    if (!levelFile[idUser]) {
+        levelFile[idUser] = {
+            xd: 0,
+            level: 0
+        }
+    }
+
+    levelFile[idUser].xp += randomNumber;
+
+    var levelUser = levelFile[idUser].level;
+    var xpUser = levelFile[idUser].xp;
+
+    var nextLevelXp = levelUser * 300;
+
+    if(nextLevelXp == 0) nextLevelXp = 100;
+
+    if(xpUser >= nextLevelXp){
+        
+        levelFile[idUser].level += 1;
+
+        fs.writeFile("./data/levels.json", JSON.stringify(levelFile), err =>{
+            if(err) console.log(err);
+        });
+
+    }
 
 }
 
-bot.login(process.env.token); 
+bot.login(process.env.token);
