@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    if (args[0]) return message.reply("Geen suggestie meegegeven.")
+    if (!args[0]) return message.reply("Geen suggestie meegegeven.")
     var suggestions = message.member.guild.channels.cache.get("863955314819072061");
 
     const suggestieEmbed = new discord.MessageEmbed()
