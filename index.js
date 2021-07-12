@@ -2,7 +2,6 @@ const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 const fs = require("fs");
 const activeSongs = new Map();
-const levelFile = require("./data/levels.json")
 
 
 //client//
@@ -46,8 +45,6 @@ bot.on("message", async message => {
 
     if (message.author.bot) return;
 
-    if (message.channel.type == "dm") return;
-
     var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
 
     var msg = message.content.toLocaleLowerCase();
@@ -89,37 +86,3 @@ bot.on("message", async message => {
 });
 
 bot.login(process.env.token);
-
-function RandomXp(message) {
-
-    var randomNumber = Math.floor(Math.random() * 15) + 1;
-
-    var idUser = message.author.id;
-
-    if (!levelFile[idUser]) {
-        levelFile[idUser] = {
-            xp: 0,
-            level: 0
-        }
-    }
-
-    levelFile[idUser].xp += randomNumber;
-
-    var levelUser = levelFile[idUser].level;
-    var xpUser = levelFile[idUser].xp;
-
-    var nextLevelXp = levelUser * 300;
-
-    if (nextLevelXp == 0) nextLevelXp = 100; 
-
-    if (xpUser >= nextLevelXp) {
-
-        levelFile[idUser].level += 1;
-
-        fs.writeFile("./data/levels.json", JSON.stringify(levelFile), err => {
-            if (err) console.log(err);
-        });
-
-    }
-
-}
