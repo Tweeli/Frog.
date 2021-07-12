@@ -8,7 +8,7 @@ module.exports.run = async (bot, message, args) => {
 
     var text = args.splice(1, args.length).join(" ") || '**Geen tekst opgegeven.**';
 
-    var channel = message.message.guild.channels.cache.get("863946165972107265");
+    var channel = message.member.guild.channels.cache.get("863946165972107265");
 
     if (!channel) return message.reply("Het kanaal bestaat niet.");
 
