@@ -25,7 +25,8 @@ module.exports.run = async (bot, message, args) => {
       .setTitle(`${message.author.username} heeft een review geschreven.`)
       .setColor("#6aa75e")
       .addField("Sterren: ", stars)
-      .addField("Review: ", text);
+      .addField("Review: ", text)
+      .setFooter('Created by Tweeli.#0001');
     
     message.channel.send("> Je hebt je review succesvol geschreven.");
 
