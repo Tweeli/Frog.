@@ -88,6 +88,8 @@ bot.on("message", async message => {
 
 });
 
+bot.login(process.env.token);
+
 function RandomXp(message) {
 
     var randomNumber = Math.floor(Math.random() * 15) + 1;
@@ -121,5 +123,3 @@ function RandomXp(message) {
     }
 
 }
-
-bot.login(process.env.token);
