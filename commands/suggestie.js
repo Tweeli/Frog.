@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(args.join(" "))
         .setFooter('Created by Tweeli.#0001');
 
-    var msg = await suggestions.channel.send(suggestieEmbed);
+    var msg = await suggestions.send(suggestieEmbed);
 
     await msg.react('✅');
     await msg.react('❌');
