@@ -2,9 +2,9 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Je hebt geen toestemming om dit de doen.");
+    if (!message.member.hasPermission("MANAGE_MESSAGES")) return message.reply("Je hebt geen toestemming om dit de doen.").then(msg => msg.delete({ timeout: 3000 }));
 
-    if (!args[0]) return message.reply("Geen aantal opgegeven.");
+    if (!args[0]) return message.reply("Geen aantal opgegeven.").then(msg => msg.delete({ timeout: 3000 }));
 
     if (Number.isInteger(parseInt(args[0]))) {
 
