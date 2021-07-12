@@ -49,15 +49,6 @@ bot.on("message", async message => {
 
     var msg = message.content.toLocaleLowerCase();
 
-    for (let i = 0; i < swearWords["vloekwoorden"].length; i++) {
-
-        if (msg.includes(swearWords["vloekwoorden"][i])) {
-            message.delete();
-
-            return message.reply("Gelieve niet te schelden.").then(msg => msg.delete({ timeout: 3000 }));
-        }
-
-    }
 
     var prefix = botConfig.prefix;
 
