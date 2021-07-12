@@ -6,7 +6,7 @@ module.exports.run = async (bot, message, args) => {
 
     if (!amountStars || amountStars < 1 || amountStars > 5) return message.reply("Geef een aantal op tussen 1 en 5 sterren.");
 
-    var text = args.splice(1, args.length).join(" ") || '**Geen tekst opgegeven.**';
+    var text = args.splice(1, args.length).join(" ") || 'Geen tekst opgegeven.';
 
     var channel = message.member.guild.channels.cache.get("863946165972107265");
 
