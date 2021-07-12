@@ -71,7 +71,7 @@ module.exports.run = async (client, message, args) => {
 
             msg.delete();
 
-            message.reply("Kick geanuleerd").then(m => m.delete(5000));
+            message.reply("Kick geanuleerd").then(msg => msg.delete({ timeout: 3000 }));
 
         }
 
