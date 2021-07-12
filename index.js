@@ -67,7 +67,13 @@ bot.on("message", async message =>{
     var messageArray = message.content.split(" ");
 
     var command = messageArray[0];
+
+    RandomXp();
+
+
     if(!message.content.startsWith(prefix)) return;
+    
+    
     var arguments = messageArray.slice(1);
 
 
@@ -81,5 +87,13 @@ bot.on("message", async message =>{
 
 
 });
+
+function RandomXp() {
+
+    var randomNumber = Math.floor(Math.random() * 15) + 1;
+
+    console.log(randomNumber);
+
+}
 
 bot.login(process.env.token); 
