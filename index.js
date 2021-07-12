@@ -96,7 +96,7 @@ function RandomXp(message) {
 
     if (!levelFile[idUser]) {
         levelFile[idUser] = {
-            xd: 0,
+            xp: 0,
             level: 0
         }
     }
