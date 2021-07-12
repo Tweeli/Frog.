@@ -47,6 +47,20 @@ bot.on("message", async message =>{
 
     if(message.channel.type == "dm") return;
 
+    var swearWords = JSON.parse(fs.readFileSync("./data/swearWords.json"));
+
+    var msg = message.content.toLocaleLowerCase();
+
+    for (let i = 0; i < swearWords["vloekwoorden"].length; i++) {
+
+        if (msg.includes(swearWords["vloekwoorden"][i])) {
+            message.delete();
+
+            return message.reply("Gelieve niet te schelden.").then(msg => msg.delete({ timeout: 3000 }));
+        }
+   
+    }
+
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
