@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription("> Staff suggestie: " + args.join(" "))
         .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-    var msg = await suggestions.send({embeds: [suggestieEmbed]})
+    var msg = await suggestions.send(suggestieEmbed)
     
     await msg.react('✅')
     await msg.react('❌')

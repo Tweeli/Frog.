@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
         .addField("Persoon toegevoegd door", message.author)
         .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-    message.reply({embeds: [embedPromt]}).then(async msg => {
+    message.reply(embedPromt).then(async msg => {
 
         message.delete();
 
@@ -46,7 +46,7 @@ module.exports.run = async (bot, message, args) => {
                 READ_MESSAGE_HISTORY: true
             });
 
-            message.channel.send({embeds: [toevoegEmbed]}).then(msg => msg.delete({timeout: 5000 }));
+            message.channel.send(toevoegEmbed).then(msg => msg.delete({timeout: 5000 }));
 
         }else if (emoji == "❌"){
 

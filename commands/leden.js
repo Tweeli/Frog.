@@ -11,7 +11,7 @@ module.exports.run = async (bot, message, args) => {
         .setDescription(`Leden | 👤: ${message.guild.memberCount - message.guild.members.cache.filter(m =>m.user.bot).size} \n Bots | 🤖: ${message.guild.members.cache.filter(m =>m.user.bot).size} \n Totaal aantal leden | 👥: ${message.guild.memberCount}`)
         .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-        message.reply({embeds: [ledenEmbed]});
+        message.reply(ledenEmbed);
 
 }
 

@@ -30,13 +30,13 @@ module.exports.run = async(bot, message, args) => {
         .setTimestamp()
         .setDescription(`**Gebannen: ** ${banUser} \n**Gebannen door:** ${message.author} \n**Reden: ** ${reason}`);
 
-    message.reply({embeds: [embedPrompt]}).then(async msg => {
+    message.reply(embedPrompt).then(async msg => {
 
     message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1}).then(collected => {
 
         if(collected.first().content.toLowerCase() == 'ja' || `yes`) {
             
-            banChannel.send({embeds: [embed]})
+            banChannel.send(embed)
         banUser.ban({ reason: reason }).catch(err => {
             if (err) return message.channel.send(`Er is iets foutgegaan.`);
         });

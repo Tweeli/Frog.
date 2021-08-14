@@ -39,7 +39,7 @@ module.exports.run = async (bot, message, args) => {
       .setTimestamp()
       .setDescription(`**Gemute: ** ${mutePerson} \n**Gemute door:** ${message.author} \n**Reden: ** ${reden} \n**Tijd: ** ${tijd}`)
       .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
-    muteChannel.send({embeds: [muteEmbed]})
+    muteChannel.send(muteEmbed)
 
 
     setTimeout(() => {
@@ -48,12 +48,12 @@ module.exports.run = async (bot, message, args) => {
 
         message.channel.send(`${mutePerson} is geunmute`);
 
-       var muteEmbed = new discord.MessageEmbed()
+       var muteEmbed2 = new discord.MessageEmbed()
         .setColor("#6aa75e")
         .setFooter(message.member.displayName)
         .setTimestamp()
         .setDescription(`**Geumute: ** ${mutePerson} \n**Geunmute door:** Den Haag Bot \n**Reden: ** auto`);
-       muteChannel.send({embeds: [muteEmbed]})
+       muteChannel.send(muteEmbed2)
 
     }, ms(muteTime));
 

@@ -31,13 +31,13 @@ module.exports.run = async(bot, message, args) => {
         .setTimestamp()
         .setDescription(`**Gekickt: ** ${kickUser} \n**Gekickt door:** ${message.author} \n**Reden: ** ${reason}`);
 
-    message.reply({embeds: [embedPrompt]}).then(async msg => {
+    message.reply(embedPrompt).then(async msg => {
 
     message.channel.awaitMessages(m => m.author.id === message.author.id, {max: 1}).then(collected => {
 
         if(collected.first().content.toLowerCase() == 'ja' || `yes`) {
             
-            kickChannel.send({embeds: [avatarEmbed]})
+            kickChannel.send(embed)
             kickUser.kick(reason).catch(err => {
             if (err) return message.channel.send(`Er is iets foutgegaan.`);
         });

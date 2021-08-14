@@ -26,7 +26,7 @@ module.exports.run = async (bot, message, args) => {
       .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png')
       .setTimestamp()
       .setDescription(`**Geunmute: ** ${unmutePersoon} \n**Gemute door:** ${message.author}`);
-      muteChannel.send({embeds: [muteEmbed]})
+      muteChannel.send(muteEmbed)
 
 
     unmutePersoon.roles.remove(muteRole.id);

@@ -12,6 +12,7 @@
     "canvacord": "^5.2.1",
     "discord.js": "^13.0.1",
     "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
     "superagent": "^6.1.0"
   }
 }

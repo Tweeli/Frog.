@@ -48,7 +48,7 @@ module.exports.run = async (bot, message, args) => {
                             .setDescription("Het ticket van <#" + `${createdChannel.id}` + "> is geopend.")
                             .setColor("#6aa75e")
                             .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
-                            message.reply({embeds: [ticketEmbed]})
+                            message.reply(ticketEmbed)
 
                     createdChannel.send(`${message.author}, <@&682635913431482471>`);
                     var embedParent = new discord.MessageEmbed()
@@ -58,7 +58,7 @@ module.exports.run = async (bot, message, args) => {
                         .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
           
        
-                    settedParent.send({embeds: [embedParent]})
+                    settedParent.send(embedParent)
                        
                     var ticketLog = new discord.MessageEmbed()
                     .setTitle("Ticket, " + createdChannel.name)
@@ -67,7 +67,7 @@ module.exports.run = async (bot, message, args) => {
                     .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
                     var logChannel = message.guild.channels.cache.find(channel => channel.id === "864201987683385435")
                     if(!logChannel) return message.reply("Er is iets misgelopen 1.");
-                    message.reply({embeds: [ticketLog]})
+                    message.reply(ticketLog)
    
              
 

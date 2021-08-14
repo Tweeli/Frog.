@@ -38,7 +38,7 @@ module.exports.run = async (bot, message, args) => {
         **Staff warn gegeven door:** ${message.author}
         **Redenen: ** ${reason}`)
         .addField("Aantal warns", warns[warnUser.id].warns)
-        warnUser.send({embeds: [warnEmbed]})
+        warnUser.send(warnEmbed)
 
     var warningEmbed = new discord.MessageEmbed()
         .setColor("#ff0000")
@@ -51,7 +51,7 @@ module.exports.run = async (bot, message, args) => {
 
     var warninglog = message.member.guild.channels.cache.get("662586267183349760");
 
-    warninglog.send({embeds: [warningEmbed]})
+    warninglog.send(warningEmbed)
     }
 
 
