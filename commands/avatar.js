@@ -2,15 +2,15 @@ const discord = require("discord.js");
 
 module.exports.run = async(bot, message, args) => {
 
-    var member = message.guild.member(message.mentions.users.first() || bot.users.cache.get(args[0]));
-    if(!member) member = message.member;
+    const avMember = message.mentions.users.first() || message.author;
+    
 
     var avatarEmbed = new discord.MessageEmbed()
-        .setTitle(`Profielfoto van ${member.user.tag}`)
-        .setImage(member.user.displayAvatarURL({dynamic : true, size: 4096}))
+        .setAuthor(`${avMember.tag}`, `${avMember.displayAvatarURL({dynamic : true, size: 4096})}`)
+        .setImage(avMember.displayAvatarURL({dynamic : true, size: 4096}))
         .setColor("#6aa75e")
-        .setFooter('Created by Tweeli.#0001');
-    message.channel.send(avatarEmbed)   
+        .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
+        message.reply({embeds: [avatarEmbed]})
 
 }
 

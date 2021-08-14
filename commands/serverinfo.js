@@ -10,8 +10,7 @@ module.exports.run = async(bot, message, args) => {
      .setThumbnail(`${message.guild.iconURL({ size: 4096 })}`)
      .setTitle(`${message.guild.name}`)
      .addField("ID:", `${message.guild.id}`)
-     .addField("Founder:", `${message.guild.owner.user.tag}`, true)
-     .addField("Owner:", "BAP#0515", true)
+     .addField("Founder:", `<@486559825984225283>`, true)
      .addField("Regio:", `${message.guild.region}`, true)
      .addField("Bots:", `${message.guild.members.cache.filter(m =>m.user.bot).size}`, true)
      .addField("Mensen:", `${message.guild.memberCount - message.guild.members.cache.filter(m =>m.user.bot).size}`, true)
@@ -21,10 +20,10 @@ module.exports.run = async(bot, message, args) => {
      .addField("Spraakkanalen:", `${message.guild.channels.cache.filter(chan => chan.type == "voice").size}`, true)
      .addField("Gemaakt op:", `${moment(message.guild.createdAt).format('LL')}`)
      .addField("Je bent gejoined op:", `${moment(message.member.joinedAt).format('LL')}`)
-     .addField(`Rollen: [${roles}]`, `${message.guild.roles.cache.map(r => r).join(" ").replace("@everyone", "")}`)
-     .setFooter('Created by Tweeli.#0001');
+     .addField(`Rollen:`, `Deze server telt **${roles} rollen**. Voor meer info over de rollen kunt u !rollen doen.`)
+     .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-     message.channel.send(serverinfoEmbed);
+     message.reply({embeds: [serverinfoEmbed]})
 
 
 
@@ -34,5 +33,6 @@ module.exports.run = async(bot, message, args) => {
 module.exports.help = {
     name: "serverinfo",
     description: "",
-    category: ""
+    category: "",
+    aliases: ["sinfo"]
 }

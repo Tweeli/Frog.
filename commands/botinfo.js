@@ -2,25 +2,26 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    var botinfoEmbed = new discord.MessageEmbed()
-            .setTitle('Frog. | BOT')
+    var botInfoEmbed = new discord.MessageEmbed()
+            .setTitle('Den Haag Bot | BOT')
             .setColor("#6aa75e")
-            .addField("Bot naam:", "Frog.")
-            .addField("Bot ID:", "795441564397994004")
-            .addField("Gemaakt door:", "Tweeli.#0001")
-            .addField("Discord.js:", "V12.5.1")
-            .addField("Node:", "V13.14.0")
-            .addField("Platform:", "MacOS")
-            .addField("Laatst geüpdate:", "24 Juni 23:44")
-            .addField("Gemaakt op:", "15 Juni 2021")
-            .setThumbnail('https://media.discordapp.net/attachments/850532618353246218/856213575936901190/Screenshot_2020-12-24_at_01.19.40.png')
+            .addField("Bot naam", "Den Haag Bot.")
+            .addField("Bot ID", "868367264053858314")
+            .addField("Gemaakt door", "Tweeli.#0001")
+            .addField("Gemaakt op", "Visual Studio Code.")
+            .addField("Node.js", "13.0.1")
+            .addField("Platform", "MacOS")
+            .addField("Laatst geüpdate", "10 Augustus 2021.")
+            .addField("Gemaakt op", "15 Juni 2021")
+            .setThumbnail('https://cdn.discordapp.com/attachments/755878713668796446/850431626608902204/image0.png')
             .setTimestamp()
-            .setFooter('Created by Tweeli.#0001');
+            .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-        return message.channel.send(botinfoEmbed);
+            message.reply({embeds: [botInfoEmbed]});
 
 }
 
 module.exports.help = {
-    name: "botinfo"
+    name: "botinfo",
+    aliases: ["binfo"]
 }

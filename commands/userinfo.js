@@ -16,24 +16,23 @@ module.exports.run = async(bot, message, args) => {
     if(nickName == null || undefined) nickName = "Geen.";
 
     var userinfoEmbed = new discord.MessageEmbed()
+        .setAuthor(`${message.author.tag}`, `${message.author.avatarURL({ size: 4096 })}`)
         .setColor("#6aa75e")
+        .setDescription(`${message.author}`)
         .setThumbnail(member.user.displayAvatarURL({size: 4096}))
-        .setTitle(`${member.user.tag}`)
-        .addField("ID:", `${member.id}`, true)
-        .addField("Bijnaam:", nickName, true)
-        .addField("Status:", `${status}`, true)
-        .addField("Game:", `${member.presence.activities[0] ? member.presence.activities[0].name : 'Geen.'}`, true)
-        .addField("Account gemaakt:", `${moment(member.user.createdAt).format("LL")}`)
-        .addField("Server gejoined:", `${moment(member.joinedAt).format('LL')}`)
-        .addField(`Rollen: [${roles}]`, `${roleNames}`)
-        .setFooter('Created by Tweeli.#0001');
+        .addField("ID", `${member.id}`, true)
+        .addField("Bijnaam", nickName, true)
+        .addField("Status", `${status}`, true)
+        .addField("Game", `${member.presence.activities[0] ? member.presence.activities[0].name : 'Geen.'}`, true)
+        .addField("Account gemaakt", `${moment(member.user.createdAt).format("LL")}`)
+        .addField("Server gejoined", `${moment(member.joinedAt).format('LL')}`)
+        .addField(`Rollen [${roles}]`, `${roleNames}`)
+        .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 
-    message.channel.send(userinfoEmbed);
+        message.reply({embeds: [userinfoEmbed]})
 }
 
 module.exports.help = {
     name: "userinfo",
-    description: "",
-    category: ""
+    aliases: ["uinfo", "whois"]
 }
-

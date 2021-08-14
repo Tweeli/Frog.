@@ -3,7 +3,7 @@ const discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
 
-    const categoryID = "850530980430479361";
+    const categoryID = "855714062037549086";
     var userName = message.author.username;
     var userDiscriminator = message.author.discriminator;
 
@@ -14,22 +14,14 @@ module.exports.run = async (bot, message, args) => {
         if (channel.name == userName.toLowerCase() + "-" + userDiscriminator) {
             ticketBestaat = true;
 
-            message.reply("Je hebt al een ticket aangemaakt");
+           return message.reply("Je hebt al een ticket aangemaakt");
 
-            return;
+            
         }
 
     });
 
     if (ticketBestaat) return;
-
-
-    var ticketEmbed = new discord.MessageEmbed()
-        .setTitle("Hoi " + message.author.username)
-        .setColor("#6aa75e")
-        .setFooter('Created by Tweeli.#0001');
-
-    message.channel.send(ticketEmbed);
 
     message.guild.channels.create(userName.toLowerCase() + "-" + userDiscriminator, { type: 'text' }).then(
         (createdChannel) => {
@@ -37,7 +29,7 @@ module.exports.run = async (bot, message, args) => {
                 (settedParent) => {
 
                     settedParent.updateOverwrite(message.guild.roles.cache.find(x => x.name === '@everyone'), {
-                        SEND_MESSAGES: false,
+                        SEND_MESSAGES: true,
                         VIEW_CHANNEL: false
                     });
 
@@ -51,23 +43,31 @@ module.exports.run = async (bot, message, args) => {
                         VIEW_CHANNEL: true,
                         READ_MESSAGE_HISTORY: true
                     });
+                    
+                        var ticketEmbed = new discord.MessageEmbed()
+                            .setDescription("Het ticket van <#" + `${createdChannel.id}` + "> is geopend.")
+                            .setColor("#6aa75e")
+                            .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
+                            message.reply({embeds: [ticketEmbed]})
 
+                    createdChannel.send(`${message.author}, <@&682635913431482471>`);
                     var embedParent = new discord.MessageEmbed()
                         .setTitle(`Hoi ${message.author.username}`)
                         .setDescription("Het support team komt er zo snel mogelijk aan! \n Zeg hier alvast je vraag.")
                         .setColor('#6aa75e')
-                        .setFooter('Created by Tweeli.#0001');
+                        .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
+          
        
-                    settedParent.send(embedParent);
-
+                    settedParent.send({embeds: [embedParent]})
+                       
                     var ticketLog = new discord.MessageEmbed()
-                    .setTitle("Ticket, " + message.channel.name)
-                    .setDescription("Het ticket van " + message.channel.name + " is geopend.")
+                    .setTitle("Ticket, " + createdChannel.name)
+                    .setDescription("Het ticket van " + createdChannel.name + " is geopend.")
                     .setColor("#6aa75e")
-                    .setFooter('Created by Tweeli.#0001');
-                    var logChannel = message.guild.channels.cache.find(channel => channel.id === "850539977444294686")
-                    if(!logChannel) return message.reply("Er is iets misgelopen.");
-                    logChannel.send(ticketLog);
+                    .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
+                    var logChannel = message.guild.channels.cache.find(channel => channel.id === "864201987683385435")
+                    if(!logChannel) return message.reply("Er is iets misgelopen 1.");
+                    message.reply({embeds: [ticketLog]})
    
              
 
@@ -77,14 +77,17 @@ module.exports.run = async (bot, message, args) => {
 
                 }
             ).catch(err => {
-                message.channel.send("Er is iets misgelopen");
+                console.log(err)
+                message.channel.send("Er is iets misgelopen 2.");
             });
         }
     ).catch(err => {
-        message.channel.send("Er is iets misgelopen");
+        console.log(err)
+        message.channel.send("Er is iets misgelopen 3.");
     });
-}
+} 
 
 module.exports.help = {
-    name: "new"
+    name: "new",
+    aliases: ["ticket"]
 }
