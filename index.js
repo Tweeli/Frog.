@@ -1,7 +1,6 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
-const fs = require("fs");
-const activeSongs = new Map();
+const fs = require("fs"); 
 
 
 //client//
@@ -9,13 +8,13 @@ const bot = new discord.Client();
 bot.commands = new discord.Collection();
 
 
-fs.readdir("./commands/", (err, files) => {
+fs.readdir("./commands/" , (err, files) => {
 
-    if (err) console.log(err);
+    if(err) console.log(err);
 
     var jsFiles = files.filter(f => f.split(".").pop() === "js");
 
-    if (jsFiles.length <= 0) {
+    if(jsFiles.length <=0) {
         console.log("Kon geen files vinden.");
         return;
     }
@@ -34,32 +33,25 @@ fs.readdir("./commands/", (err, files) => {
 bot.login(botConfig.token);
 
 bot.on("ready", async () => {
-
-    console.log(`${bot.user.username} Is online!`)
-
-    bot.user.setActivity("Tweeli.#0001.", { type: "LISTENING" });
+    
+ console.log(`${bot.user.username} Is online!`)
+ 
+ bot.user.setActivity("Tweeli.#0001.", {type: "LISTENING"});
 
 });
 
-bot.on("message", async message => {
+bot.on("message", async message =>{
 
-    if (message.author.bot) return;
+    if(message.author.bot) return;
 
-    var msg = message.content.toLocaleLowerCase();
-
+    if(message.channel.type == "dm") return;
 
     var prefix = botConfig.prefix;
 
     var messageArray = message.content.split(" ");
 
     var command = messageArray[0];
-
-
-    if (!message.content.startsWith(prefix)) return;
-
-
     var arguments = messageArray.slice(1);
-
 
     var commands = bot.commands.get(command.slice(prefix.length));
 
@@ -67,9 +59,9 @@ bot.on("message", async message => {
         active: activeSongs
     };
 
-    if (commands) commands.run(bot, message, arguments, options);
+    if(commands) commands.run(bot, message, arguments, options);
 
 
 });
 
-bot.login(process.env.token);
+bot.login(process.env.token); 
