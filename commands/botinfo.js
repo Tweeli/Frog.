@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
             .addField("Bot ID", "868367264053858314")
             .addField("Gemaakt door", "Tweeli.#0001")
             .addField("Gemaakt op", "Visual Studio Code.")
-            .addField("Node.js", "13.0.1")
+            .addField("Node.js", "12.5.3")
             .addField("Platform", "MacOS")
             .addField("Laatst geüpdate", "10 Augustus 2021.")
             .addField("Gemaakt op", "15 Juni 2021")
