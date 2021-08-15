@@ -38,7 +38,8 @@ module.exports.run = async(bot, message, args) => {
             
             banChannel.send(embed)
         banUser.ban({ reason: reason }).catch(err => {
-            if (err) return message.channel.send(`Er is iets foutgegaan.`);
+            if (err) return message.channel.send(`Er is iets foutgegaan.`)
+            console.log(err);
         });
 
         

@@ -16,5 +16,5 @@ module.exports.run = async(bot, message, args) => {
 
 module.exports.help = {
     name: "av",
-    aliases: ["av", "pf", "profielfoto", "pfp"]
+    aliases: ["av", "pf", "profielfoto", "pfp", "avatar"]
 }

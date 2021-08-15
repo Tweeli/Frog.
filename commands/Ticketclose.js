@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    const categoryID = "855714062037549086";
+    const categoryID = "784414133051064390";
 
     if (!message.member.roles.cache.has('682635913431482471')) return message.reply('Jij kan dit niet');
 
@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
         // Create embed.
         var closeticketEmbed = new discord.MessageEmbed()
             .setTitle("Ticket, " + message.channel.name)
-            .setDescription("Het ticket van " + message.channel.name + ` is gesloten door ${message.author} . \n \n **Reden: ** ${reden}`)
+            .setDescription("Het ticket van " + message.channel.name + ` is gesloten door ${message.author} . \n **Reden: ** ${reden}`)
             .setColor("#6aa75e")
             .setFooter('TeamDJD | Den Haag Stad V2', 'https://cdn.discordapp.com/attachments/755878713668796446/872847136478351380/image0.png');
 

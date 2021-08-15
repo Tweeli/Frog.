@@ -20,8 +20,7 @@ module.exports.run = async(bot, message, args) => {
    .setTimestamp()
    .setColor('#6aa75e')
 
-   message.reply(eightBallEmbed)
-   
+   message.channel.send(eightBallEmbed);
 
 
 }
